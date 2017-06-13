@@ -1,0 +1,22 @@
+npm run serve
+npm start
+
+1.Yeoman
+npm install -g yo
+npm install -g generator-react-webpack
+yo react-webpack React-Gallery
+
+参考：http://blog.csdn.net/stayhungry_/article/details/51820457
+
+2.react develop tool in chrome
+
+3.webpack
+webpack-dev-server
+
+css处理prefix
+npm install autoprefixer-loader --save-dev
+npm install sass-loader --save-dev
+npm install node-sass --save-dev
+
+json处理
+npm install json-loader --save-dev
