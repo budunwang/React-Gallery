@@ -4,6 +4,7 @@ import 'styles/App.scss';
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import ImgFigure from './ImgFigure';
+import ControllerUnit from './ControllerUnit';
 
 //获取图片信息
 import imageJsonDatas from '../data/imageDatas.json';
@@ -117,7 +118,7 @@ class AppComponent extends React.Component {
     //处理上部区域图片
     let imgsArrangeTopArr = [];
     //随机取0或1
-    let topImgNum = Math.ceil(Math.random() * 2);
+    let topImgNum = Math.floor(Math.random() * 2);
     //随机取出上部区域图片信息
     let topImgSpliceIndex = Math.ceil(Math.random() * (imgsArrangeArr.length - topImgNum));
     //取0或1张图片在上部
@@ -148,6 +149,8 @@ class AppComponent extends React.Component {
         isCenter: false
       };
     }
+
+    //debugger;
 
     //将中间图片放回图片数组
     imgsArrangeArr.splice(centerIndex, 0, imgsArrangeCenterArr[0]);
@@ -205,7 +208,8 @@ class AppComponent extends React.Component {
           isCenter: false
         }
       }
-      imgFigure.push(<ImgFigure data={value} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse.bind(this,index)} center={this.center.bind(this,index)}/>);
+      imgFigure.push(<ImgFigure key={index} data={value} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse.bind(this,index)} center={this.center.bind(this,index)}/>);
+      controllerUnits.push(<ControllerUnit key={index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse.bind(this,index)} center={this.center.bind(this,index)}/>)
     });
 
     return (
@@ -214,6 +218,7 @@ class AppComponent extends React.Component {
           {imgFigure}
         </section>
         <nav className="controller-nav">
+          {controllerUnits}
         </nav>
       </section>
     );
